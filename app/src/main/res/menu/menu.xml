@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/menu_informacion"
+            android:icon="@drawable/iconmenu"
+            android:title="Información General"/>
+        <item
+            android:id="@+id/menu_languaje"
+            android:icon="@drawable/iconmenu"
+            android:title="LANGUAGE"/>
+        <item
+            android:id="@+id/menu_bandera"
+            android:icon="@drawable/iconmenu"
+            android:title="Bandera"/>
+    </group>
+</menu>
