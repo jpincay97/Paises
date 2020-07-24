@@ -1,5 +1,11 @@
 package com.example.paises.Model;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.ArrayList;
+
 public class Pais {
 
     private String name;
@@ -24,6 +30,19 @@ public class Pais {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public Pais(JSONObject a) throws JSONException {
+        name =  a.getString("name").toString() ;
+        imagen = a.getString("Imagen").toString() ;
+    }
+
+    public static ArrayList<Pais> JsonObjectsBuild(JSONArray datos) throws JSONException {
+        ArrayList<Pais> paises = new ArrayList<>();
+        for (int i = 0; i < datos.length() && i<20; i++) {
+            paises.add(new Pais(datos.getJSONObject(i)));
+        }
+        return paises;
     }
 
 }
