@@ -4,10 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
-import android.widget.AdapterView;
 import android.widget.Toast;
 
 import com.example.paises.Adapter.AdaptadorPais;
@@ -22,7 +19,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
-public class MainActivity extends AppCompatActivity implements Asynchtask, AdapterView.OnItemClickListener{
+public class MainActivity extends AppCompatActivity implements Asynchtask{
 
     ArrayList<Pais> listaPaises;
     RecyclerView recyclerPaises;
@@ -49,20 +46,11 @@ public class MainActivity extends AppCompatActivity implements Asynchtask, Adapt
         try {
             JSONArray JSONlista =  new JSONArray(result);
             lstPaises = Pais.JsonObjectsBuild(JSONlista);
-            AdaptadorPais adapator = new AdaptadorPais(lstPaises,MainActivity.this);
+            AdaptadorPais adapator = new AdaptadorPais(lstPaises,this);
             recyclerPaises.setAdapter(adapator);
         }catch (JSONException e)
         {
             Toast.makeText(this.getApplicationContext(),e.getMessage(),Toast.LENGTH_LONG);
         }
-    }
-
-    @Override
-    public void onItemClick(AdapterView<?> adapterView, View view, int i, long id) {
-
-        Intent intent= new Intent(MainActivity.this, MainActivity2.class);
-        intent.putExtra("pais",((Pais)adapterView.getItemAtPosition(i)).getName());
-        startActivity(intent);
-
     }
 }

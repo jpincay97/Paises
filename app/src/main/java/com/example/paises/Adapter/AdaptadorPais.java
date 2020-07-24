@@ -1,6 +1,7 @@
 package com.example.paises.Adapter;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -19,13 +20,15 @@ import com.example.paises.R;
 import java.util.ArrayList;
 
 public class AdaptadorPais extends RecyclerView.Adapter<AdaptadorPais.ViewHolderPaises>{
-    ArrayList<Pais> listaPaises;
-    Activity activity;
-    //int posicionMarcada=0;
 
-    public AdaptadorPais(ArrayList<Pais> listaPaises, Activity activity) {
+    ArrayList<Pais> listaPaises;
+    //Activity activity;
+    private Context Ctx;
+    int posicionMarcada=0;
+
+    public AdaptadorPais(ArrayList<Pais> listaPaises, Context mCtx) {
         this.listaPaises = listaPaises;
-        this.activity = activity;
+        Ctx=mCtx;
     }
 
     @Override
@@ -35,14 +38,25 @@ public class AdaptadorPais extends RecyclerView.Adapter<AdaptadorPais.ViewHolder
     }
 
     @Override
-    public void onBindViewHolder(AdaptadorPais.ViewHolderPaises holder, int position) {
+    public void onBindViewHolder(AdaptadorPais.ViewHolderPaises holder, final int position) {
         Pais pais = listaPaises.get(position);
         holder.lblPais.setText(listaPaises.get(position).getName());
-        Glide.with(activity)
+        Glide.with(Ctx)
                 .load(pais.getImagen())
                 .into(holder.imgImagen);
 
-        /*final int pos=position;
+        final int pos=position;
+
+        /*holder.parentLayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                Intent intent = new Intent(mContext, GalleryActivity.class);
+                intent.putExtra("image_url", mImages.get(position));
+                intent.putExtra("image_name", mImageNames.get(position));
+                mContext.startActivity(intent);
+            }
+        });*/
 
         holder.imgImagen.setOnClickListener(new View.OnClickListener(){
             @Override
@@ -53,8 +67,10 @@ public class AdaptadorPais extends RecyclerView.Adapter<AdaptadorPais.ViewHolder
         });
 
         if(posicionMarcada==position){
-
-        }*/
+            Intent intent= new Intent(Ctx, MainActivity2.class);
+            intent.putExtra("pais",listaPaises.get(position).getName());
+            Ctx.startActivity(intent);
+        }
     }
 
     @Override
