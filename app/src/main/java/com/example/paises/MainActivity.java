@@ -22,7 +22,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
-public class MainActivity extends AppCompatActivity implements Asynchtask{
+public class MainActivity extends AppCompatActivity implements Asynchtask, AdapterView.OnItemClickListener{
 
     ArrayList<Pais> listaPaises;
     RecyclerView recyclerPaises;
@@ -55,5 +55,14 @@ public class MainActivity extends AppCompatActivity implements Asynchtask{
         {
             Toast.makeText(this.getApplicationContext(),e.getMessage(),Toast.LENGTH_LONG);
         }
+    }
+
+    @Override
+    public void onItemClick(AdapterView<?> adapterView, View view, int i, long id) {
+
+        Intent intent= new Intent(MainActivity.this, MainActivity2.class);
+        intent.putExtra("pais",((Pais)adapterView.getItemAtPosition(i)).getName());
+        startActivity(intent);
+
     }
 }

@@ -21,7 +21,7 @@ import java.util.ArrayList;
 public class AdaptadorPais extends RecyclerView.Adapter<AdaptadorPais.ViewHolderPaises>{
     ArrayList<Pais> listaPaises;
     Activity activity;
-    int posicionMarcada=0;
+    //int posicionMarcada=0;
 
     public AdaptadorPais(ArrayList<Pais> listaPaises, Activity activity) {
         this.listaPaises = listaPaises;
@@ -42,7 +42,7 @@ public class AdaptadorPais extends RecyclerView.Adapter<AdaptadorPais.ViewHolder
                 .load(pais.getImagen())
                 .into(holder.imgImagen);
 
-        final int pos=position;
+        /*final int pos=position;
 
         holder.imgImagen.setOnClickListener(new View.OnClickListener(){
             @Override
@@ -53,8 +53,8 @@ public class AdaptadorPais extends RecyclerView.Adapter<AdaptadorPais.ViewHolder
         });
 
         if(posicionMarcada==position){
-            
-        }
+
+        }*/
     }
 
     @Override
