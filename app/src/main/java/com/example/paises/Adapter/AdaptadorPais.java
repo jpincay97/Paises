@@ -1,6 +1,7 @@
 package com.example.paises.Adapter;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,6 +11,8 @@ import android.widget.TextView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.example.paises.MainActivity;
+import com.example.paises.MainActivity2;
 import com.example.paises.Model.Pais;
 import com.example.paises.R;
 
@@ -18,6 +21,7 @@ import java.util.ArrayList;
 public class AdaptadorPais extends RecyclerView.Adapter<AdaptadorPais.ViewHolderPaises>{
     ArrayList<Pais> listaPaises;
     Activity activity;
+    int posicionMarcada=0;
 
     public AdaptadorPais(ArrayList<Pais> listaPaises, Activity activity) {
         this.listaPaises = listaPaises;
@@ -37,6 +41,20 @@ public class AdaptadorPais extends RecyclerView.Adapter<AdaptadorPais.ViewHolder
         Glide.with(activity)
                 .load(pais.getImagen())
                 .into(holder.imgImagen);
+
+        final int pos=position;
+
+        holder.imgImagen.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+                posicionMarcada=pos;
+                notifyDataSetChanged();
+            }
+        });
+
+        if(posicionMarcada==position){
+            
+        }
     }
 
     @Override
