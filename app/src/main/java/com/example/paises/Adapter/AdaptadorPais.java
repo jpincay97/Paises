@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.recyclerview.widget.RecyclerView;
@@ -45,20 +46,19 @@ public class AdaptadorPais extends RecyclerView.Adapter<AdaptadorPais.ViewHolder
                 .load(pais.getImagen())
                 .into(holder.imgImagen);
 
-        final int pos=position;
+        //final int pos=position;
 
-        /*holder.parentLayout.setOnClickListener(new View.OnClickListener() {
+        holder.parentLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
-                Intent intent = new Intent(mContext, GalleryActivity.class);
-                intent.putExtra("image_url", mImages.get(position));
-                intent.putExtra("image_name", mImageNames.get(position));
-                mContext.startActivity(intent);
+                Intent intent= new Intent(Ctx, MainActivity2.class);
+                intent.putExtra("pais",listaPaises.get(position).getName());
+                Ctx.startActivity(intent);
             }
-        });*/
+        });
 
-        holder.imgImagen.setOnClickListener(new View.OnClickListener(){
+        /*holder.imgImagen.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
                 posicionMarcada=pos;
@@ -70,7 +70,7 @@ public class AdaptadorPais extends RecyclerView.Adapter<AdaptadorPais.ViewHolder
             Intent intent= new Intent(Ctx, MainActivity2.class);
             intent.putExtra("pais",listaPaises.get(position).getName());
             Ctx.startActivity(intent);
-        }
+        }*/
     }
 
     @Override
@@ -82,11 +82,13 @@ public class AdaptadorPais extends RecyclerView.Adapter<AdaptadorPais.ViewHolder
 
         TextView lblPais;
         ImageView imgImagen;
+        LinearLayout parentLayout;
 
         public ViewHolderPaises(View itemView) {
             super(itemView);
             lblPais = (TextView) itemView.findViewById(R.id.lblPais);
             imgImagen = (ImageView) itemView.findViewById(R.id.imgImagen);
+            parentLayout = itemView.findViewById(R.id.parent_layout);
         }
     }
 }
