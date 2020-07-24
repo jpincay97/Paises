@@ -29,7 +29,7 @@ public class MainActivity extends AppCompatActivity implements Asynchtask{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        recyclerPaises = (RecyclerView) findViewById(R.id.rvOfertasLaborales);
+        recyclerPaises = (RecyclerView) findViewById(R.id.rvPaises);
         recyclerPaises.setLayoutManager(new LinearLayoutManager(this));
 
         Map<String, String> datos = new HashMap<String, String>();
@@ -46,8 +46,8 @@ public class MainActivity extends AppCompatActivity implements Asynchtask{
         try {
             JSONArray JSONlista =  new JSONArray(result);
             lstPaises = Pais.JsonObjectsBuild(JSONlista);
-            AdaptadorPais adapatorOferta = new AdaptadorPais(lstPaises,MainActivity.this);
-            recyclerPaises.setAdapter(adapatorOferta);
+            AdaptadorPais adapator = new AdaptadorPais(lstPaises,MainActivity.this);
+            recyclerPaises.setAdapter(adapator);
         }catch (JSONException e)
         {
             Toast.makeText(this.getApplicationContext(),e.getMessage(),Toast.LENGTH_LONG);

@@ -34,7 +34,7 @@ public class Pais {
 
     public Pais(JSONObject a) throws JSONException {
         name =  a.getString("name").toString() ;
-        imagen = a.getString("Imagen").toString() ;
+        imagen = a.getString("alpha2Code").toString() ;
     }
 
     public static ArrayList<Pais> JsonObjectsBuild(JSONArray datos) throws JSONException {
