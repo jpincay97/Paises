@@ -18,7 +18,7 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvPaises"
         android:layout_width="match_parent"
-        android:layout_height="598dp"
+        android:layout_height="658dp"
         android:layout_alignParentStart="true"
         android:layout_alignParentBottom="true" />
 </RelativeLayout>

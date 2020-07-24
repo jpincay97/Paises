@@ -34,12 +34,12 @@ public class Pais {
 
     public Pais(JSONObject a) throws JSONException {
         name =  a.getString("name").toString() ;
-        imagen = a.getString("alpha2Code").toString() ;
+        imagen = "http://www.geognos.com/api/en/countries/flag/"+a.getString("alpha2Code").toString()+".png";
     }
 
     public static ArrayList<Pais> JsonObjectsBuild(JSONArray datos) throws JSONException {
         ArrayList<Pais> paises = new ArrayList<>();
-        for (int i = 0; i < datos.length() && i<20; i++) {
+        for (int i = 0; i < datos.length() && i<250; i++) {
             paises.add(new Pais(datos.getJSONObject(i)));
         }
         return paises;
